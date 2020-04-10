@@ -1,0 +1,12 @@
+import fetch from 'isomorphic-unfetch'
+
+export async function fetchWrapper(input: RequestInfo,init?: RequestInit){
+  try {
+    const data = await fetch(input, init).then(res => res.json());
+    
+    return data;
+  } catch (err) {
+    console.error(err)
+    throw new Error(err.message)
+  }
+}
